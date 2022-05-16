@@ -1,5 +1,8 @@
 version: v1.1.0
 steps:
-- build: -t $Registry/request-bin:$ID .
+- build: -t $Registry/request-bin:$ID -t $Registry/request-bin --target production .
+- build: -t $Registry/request-bin-tests --target tests .
+- cmd: $Registry/request-bin-tests cargo test --release
+  workingDirectory: /app
 - push:
   - $Registry/request-bin:$ID
