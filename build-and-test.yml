@@ -1,7 +1,17 @@
 version: v1.1.0
 steps:
-- build: -t $Registry/request-bin:$ID -t $Registry/request-bin --target production .
-- build: -t $Registry/request-bin-tests --target tests .
+- build: |
+    -t $Registry/request-bin:$ID -t $Registry/request-bin \
+    --target production \
+    --build-arg BUILD_BASE=acrbeyondimages.azurecr.io/rust:alpine \
+    --build-arg PROD_BASE=acrbeyondimages.azurecr.io/alpine \
+    .
+- build: |
+    -t $Registry/request-bin-tests \
+    --target builder \
+    --build-arg BUILD_BASE=acrbeyondimages.azurecr.io/rust:alpine \
+    --build-arg PROD_BASE=acrbeyondimages.azurecr.io/alpine \
+    .
 - cmd: $Registry/request-bin-tests cargo test --release
   workingDirectory: /app
 - push:
