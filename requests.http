@@ -1,0 +1,36 @@
+#@host = http://localhost:8000
+@host = https://acr-beyond-images.azurewebsites.net
+
+###
+# Simple test request
+GET {{host}}/ping
+
+###
+# Simple test request
+GET {{host}}/king
+
+###
+# Send a GET request to the request bin
+GET {{host}}/bin
+X-Something: asdf
+
+###
+# Send a POST request to the request bin
+POST {{host}}/bin
+X-Something: asdf
+
+{
+    "foo": "bar"
+}
+
+###
+# Get a list of all captured requests (HTML)
+GET {{host}}/requests
+
+###
+# Get the details of a captured request (HTML)
+GET {{host}}/requests/0
+
+###
+# Clear all captured requests
+GET {{host}}/requests/clear

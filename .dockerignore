@@ -1,0 +1,6 @@
+.vscode
+target
+Dockerfile
+justfile
+readme.md
+requests.http

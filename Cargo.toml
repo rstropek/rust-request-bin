@@ -1,0 +1,13 @@
+[package]
+name = "acr-beyond-images"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rocket = { version = "0.5.0-rc.2", features = [ "json" ] }
+handlebars = "4"
+chrono = "0"
+
+[dependencies.rocket_dyn_templates]
+version = "0.1.0-rc.2"
+features = ["handlebars"]

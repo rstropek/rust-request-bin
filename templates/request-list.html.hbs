@@ -1,0 +1,31 @@
+{{#*inline "page"}}
+    <h1>Request Viewer</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Timestamp (UTC)</th>
+                <th>Method</th>
+                <th>URI</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each requests}}
+            <tr>
+                <th scope="row">{{id}}</th>
+                <td>{{format_date timestamp}}</td>
+                <td>{{method}}</td>
+                <td>{{uri}}</td>
+                <td><a href="requests/{{id}}">Details...</a></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" role="button" href="requests/clear">
+        Clear list
+    </a>
+{{/inline}}
+{{> (lookup this "parent")}}

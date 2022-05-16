@@ -1,0 +1,49 @@
+{{#*inline "page"}}
+    <h1>Request Viewer</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th scope="row">Timestamp (UTC)</th>
+                <td>{{format_date request.timestamp}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Method</th>
+                <td>{{request.method}}</td>
+            </tr>
+            <tr>
+                <th scope="row">URI</th>
+                <td>{{request.uri}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{#if request.body}}
+        <a id="show-headers" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseBody" role="button" 
+            aria-expanded="false" aria-controls="collapseBody">
+            Show Body
+        </a>
+        <div class="collapse" id="collapseBody">
+            <pre>
+                {{request.body}}
+            </pre>
+        </div>
+    {{/if}}
+
+    <a id="show-headers" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseHeaders" role="button" 
+        aria-expanded="false" aria-controls="collapseHeaders">
+        Show Headers
+    </a>
+    <div class="collapse" id="collapseHeaders">
+        <ul class="list-group">
+        {{#each request.headers}}
+            <li class="list-group-item">{{0}} = {{1}}</li>
+        {{/each}}
+        </ul>
+    </div>
+
+    <div>
+        <a href="/requests">Back to request list...</a>
+    </div>
+{{/inline}}
+{{> (lookup this "parent")}}
