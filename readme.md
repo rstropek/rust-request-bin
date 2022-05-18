@@ -21,3 +21,7 @@ For that reason, you have to install the tools mentioned above:
 ## Routes
 
 See [*requests.http*](requests.http) for supported routes and sample requests.
+
+## Slides
+
+You can find accompanying slides [online](https://slides.com/rainerstropek/acr-beyond-container-images/fullscreen).
